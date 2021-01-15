@@ -1,0 +1,729 @@
+﻿<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>Utilisation des lecteurs Ooyala pour diffuser du contenu Video Cloud</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="logo du produit" style="max-height: 100px;max-width: 232px;"/></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Sélectionner la langue</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+      <option value="">Autres documents Brightcove</option>
+      
+        
+          <option value="https://support.brightcove.com">Accueil Documentation</option>
+        
+      
+        
+          <option value="https://audience.support.brightcove.com">Audience de Brightcove</option>
+        
+      
+        
+          <option value="https://beacon.support.brightcove.com">Balise Brightcove</option>
+        
+      
+        
+          <option value="https://campaign.support.brightcove.com">Campagne Brightcove</option>
+        
+      
+        
+          <option value="https://engage.support.brightcove.com">Brightcove Engagez</option>
+        
+      
+        
+          <option value="https://live.support.brightcove.com">Brightcove Live</option>
+        
+      
+        
+          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+        
+      
+        
+          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+        
+      
+        
+          <option value="https://social.support.brightcove.com">Brightcove Social</option>
+        
+      
+        
+          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+        
+      
+        
+          <option value="https://player.support.brightcove.com">Développement du joueur Brightcove</option>
+        
+      
+        
+          <option value="https://apis.support.brightcove.com">API de la plate-forme Video Cloud</option>
+        
+      
+        
+          <option value="https://sdks.support.brightcove.com">SDK pour périphériques Video Cloud</option>
+        
+      
+        
+          <option value="https://integrations.support.brightcove.com">Intégrations et connecteurs CMS</option>
+        
+      
+        
+          <option value="https://general.support.brightcove.com">Informations générales sur Video Cloud</option>
+        
+      
+        
+          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+        
+      
+    </select>
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="assistance"/> Contacter le support</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/">État<img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="état du système"/> du système</a></span> <br/>
+
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/ooyala/">Migration depuis Ooyala</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">Utilisation des lecteurs Ooyala pour diffuser du contenu Video Cloud</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+        <nav class="sidenav" id="side_nav">
+          
+            
+            <h5><a href="/index.html">Accueil</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">Informations générales <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/brightcove-product-overview.html">Présentation du produit Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-continuum-overview.html">Présentation du continuum de Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-open-source-projects.html">Projets Open Source</a></li>
+                  
+                
+                  
+                    <li><a href="/general/mpeg-dash-video.html">Vidéo MPEG-DASH</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Groupes et listes de courrier électronique Brightcove</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/developer/index.html">Développeurs <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/developer/concepts-cors.html">Comprendre CORS</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-introducing-json.html">Présentation de JSON</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">Notions de base du débogage JavaScript</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">Le modèle de conception du module JavaScript</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-set-curl.html">Configuration de cURL</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-using-javascript-promises.html">Utilisation des promesses JavaScript</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/create-jwt.html">Création d'un jeton Web JSON (JWT)</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/debugging-mobile-devices.html">Débogage sur les appareils mobiles</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">Utilisation de MTR (mon traceroute)</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Utilisation de Wireshark pour suivre le trafic réseau</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/ooyala/index.html">Migration de Ooyala <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Docs de migration pour les clients Ooyala</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Migration vers l'API Brightcove Analytics</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Migration vers Video Cloud : Jeux d'annonces</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Migration vers Video Cloud : Adaptateur d'ingestion</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">Adaptateur d'ingestion : Fichiers Manifest CSV</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">Adaptateur d'ingestion : Ingester avec Aspera</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">Adaptateur d'ingestion : Ingestion avec FTPS</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">Adaptateur d'ingestion : Ingester avec OIS 2.5</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">Adaptateur d'ingestion : Ingestion avec l'API Backlot</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">Adaptateur d'ingestion : Ingestion d'actifs distants via MRSS</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">Adaptateur d'ingestion : Ingestion à partir de MRSS hébergé</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Connecteur CMS Backlot/Video Cloud</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">Backlot et Cloud vidéo : Champs vidéo et liste de lecture</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">Adaptateur d'ingestion : Formats de fichier manifeste</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">Adaptateur d'ingestion : Fichiers Manifest XML</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">Adaptateur d'ingestion : Formats de prise en charge</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">Ajout du serveur DNS Brightcove pour les tests</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Authentification pour les demandes d'API Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/trending-now-report-reference.html">Référence du rapport Tendances maintenant</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">Utilisation des lecteurs Ooyala pour le contenu Video Cloud</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/utilities/index.html">Services publics <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/utilities/base-64-encoding-tool.html">Outil de codage Base 64</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/date-converter.html">Convertisseur de date</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/string-encoder.html">Encodeur de chaîne</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/training/index.html">Entraînement <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/training/online-training-courses.html">Tous les cours de formation en ligne</a></li>
+                  
+                
+                  
+                    <li><a href="/training/register-training.html">S' inscrire à la formation dirigée par un instructeur</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">Formation : Présentation de Video Cloud</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">Formation : Présentation de Video Cloud Analytics</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-video-cloud-basics.html">Formation : Principes de base du cloud vidéo</a></li>
+                  
+                
+                  
+                    <li><a href="/training/video-cloud-studio-training-videos.html">Vidéos de formation Video Cloud Studio</a></li>
+                  
+                
+                  
+                    <li><a href="/training/brightcove-university.html">Cours de formation à l'Université de Brightcove</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html">Support <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">Problèmes connus</a></li>
+                  
+                
+                  
+                    <li><a href="/support/brightcove-answer.html">Réponses Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Affichage de la page État du système Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">Contacter les ventes</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">Ouverture d'un dossier de support</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Menu de navigation"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">Contenu de la page</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="ouvrir dans un nouvel onglet" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+
+<h1>Utilisation des lecteurs Ooyala pour diffuser du contenu Video Cloud</h1>
+<article class="bcls-article">
+  <summary>
+    <p>Cette rubrique décrit comment les lecteurs Web et SDK Ooyala continueront à fonctionner après la migration de vos vidéos vers Video Cloud, ce qui permet à vos vidéos en ligne de fonctionner pendant que vous terminez la migration vers les lecteurs Brightcove.</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">Remarque : cette rubrique s'applique <strong>uniquement</strong> aux clients Ooyala migrés vers Video Cloud.</aside>
+  </summary>
+  
+  <section class="bcls-section">
+    <h2 id="Introduction">Introduction</h2>
+    <p>Brightcove offre un <a href="https://player.support.brightcove.com/index.html">lecteur web hautement personnalisable</a>, ainsi que des <a href="https://sdks.support.brightcove.com/">lecteurs natifs pour Android, iOS et TVOS</a>.</p>
+    <p>Cependant, nous savons que le remplacement des codes d'intégration du lecteur et la reconstruction des applications de périphériques prendra du temps. Brightcove a donc construit un adaptateur qui permettra à vos lecteurs Ooyala existants de continuer à travailler en récupérant les données vidéo de Video Cloud au lieu de Backlot :</p>
+    <figure class="bcls-figure"><img class="bcls-image" alt="Connecteur Ooyala Player vers Video Cloud" src="/assets/images/ooyala/OoyalaPlayerwithVideoCloud.png"/>
+      <figcaption class="bcls-caption--image">Connecteur Ooyala Player vers Video Cloud</figcaption>
+    </figure>
+    <aside class="bcls-aside bcls-aside--information language-editable">Notez que pour tester l'adaptateur de lecture, vous devrez travailler avec votre CXM pour effectuer des ajustements aux paramètres DNS de vos ordinateurs et périphériques. Pour plus de détails, reportez-vous à <a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">la section Ajout du serveur DNS Brightcove</a> .</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="how_it_works">Fonctionnement</h2>
+    <p>Tous les lecteurs de Brightcove récupèrent des données vidéo et des listes de <a href="https://apis.support.brightcove.com/playback/">lecture via l'API de lecture</a>. Vous n'avez pas besoin de configurer les requêtes API, manuellement, cependant. Le lecteur Web dispose d'une bibliothèque de <a href="https://player.support.brightcove.com/references/player-catalog.html">catalogue</a> qui gère les demandes, et les kits SDK de périphérique ont des méthodes intégrées pour cela.</p>
+    <p>Pour que vos lecteurs Ooyala fonctionnent, Brightcove a créé un adaptateur qui pointe les demandes de données vidéo et de playlist des lecteurs vers l'API Player et les mêmes vidéos dans Video Cloud.</p>
+    <aside class="bcls-aside bcls-aside--information language-editable">Attention : vous ne pourrez plus modifier le look et la sensation de votre lecteur web Ooyala. L'aspect et la sensation actuels seront conservés.</aside>
+  </section>
+  <section class="bcls-section">
+    <h2 id="analytics">Statistiques</h2>
+    <p>À l'avenir, vous utiliserez Video Cloud Analytics. Les correctifs permettant à vos lecteurs Ooyala existants d'obtenir vos vidéos Video Cloud incluent l'envoi de données d'analyse au système d'analyse Video Cloud. Il n'y a aucune modification que vous devez apporter à vos pages ou joueurs.</p>
+    <p>Vous pouvez accéder aux données d'analyse Video Cloud à l'aide des rapports standard et personnalisés du <a href="https://studio.support.brightcove.com/analytics/">module Analytics</a> ou de l' <a href="https://apis.support.brightcove.com/analytics/">API Analytics</a>. Reportez-vous <a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">à la section Migration de l'API REST Analytics vers l'API Brightcove Analytics</a> si vous souhaitez obtenir des données d'analyse via l'API.</p>
+    <h3>Mappage des données analytiques</h3>
+    <p>Le tableau ci-dessous montre comment les champs de données analytiques Ooyala sont mappés aux données d'analyse Video Cloud.</p>
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">
+      Mappage des données d'
+      </caption>
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Ooyala Analytics</th>
+          <th>Statistiques Video Cloud</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>Lot - Mesure - Écrans</td>
+          <td><code translate="No">video_impression</code> ( Impression vidéo)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - VideoStarts</td>
+          <td><code translate="No">vide0_view</code> ( Vue vidéo)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - PlayRequested/Play</td>
+          <td><code translate="No">play_request</code> ( Demande de lecture)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - TimeWatched</td>
+          <td><code translate="No">video_seconds_viewed</code> ( Secondes vidéo affichées)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - PlayThrough25</td>
+          <td><code translate="No">video_engagement_25</code> ( Engagement vidéo 25)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - PlayThrough50</td>
+          <td><code translate="No">video_engagement_50</code> ( Engagement vidéo 50)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - PlayThrough 75</td>
+          <td><code translate="No">video_engagement_75</code> ( Engagement vidéo 75)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - PlayThrough100</td>
+          <td><code translate="No">video_engagement_100</code> ( Engagement vidéo 100)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - PercentageWatched</td>
+          <td><code translate="No">video_percent_viewed</code> ( Pourcentage vidéo visionné)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - PlayerLoads</td>
+          <td><code translate="No">player_load</code> ( Chargement du joueur)</td>
+        </tr>
+        <tr>
+          <td>Lot - Métrique - UniquePlays</td>
+          <td><code translate="No">daily_unique_viewers</code> ( Utilisateurs uniques/visionneuses uniques)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - Pcode</td>
+          <td><code translate="No">account</code> ( Compte)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - Immobilisation</td>
+          <td><code translate="No">video</code> ( Vidéo)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - CountryCode</td>
+          <td><code translate="No">country</code> ( Pays)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - Région</td>
+          <td><code translate="No">region</code> ( Région)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - Ville</td>
+          <td><code translate="No">city</code> ( Ville)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - Type de périphérique</td>
+          <td><code translate="No">device_type</code> ( Type de périphérique)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - os</td>
+          <td><code translate="No">device_os</code> ( Système d'exploitation de l'appareil)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - Navigateur</td>
+          <td><code translate="No">browser_type</code> ( Type de navigateur)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - PlayerID</td>
+          <td><code translate="No">player</code> ( Joueur)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - Domaine</td>
+          <td><code translate="No">destination_domain</code> ( Domaine de destination)</td>
+        </tr>
+        <tr>
+          <td>Lot - Dimension - URL</td>
+          <td><code translate="No">destination_path</code> ( Chemin de destination)</td>
+        </tr>
+        <tr>
+          <td>Utilisateurs simultanés en temps réel - Live</td>
+          <td><code translate="No">ccu</code> ( Utilisateurs simultanés)</td>
+        </tr>
+        <tr>
+          <td>Top Assets en temps réel - Live</td>
+          <td>(L'actif le plus important)</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="bcls-section">
+    <h2 id="what_may_not_work">Ce qui peut ne pas fonctionner</h2>
+    <p>Si vous avez des add-ons intégrés au lecteur Ooyala, ils continueront à être fonctionnels. Toutefois, si ces modules complémentaires dépendent de données vidéo qui ne sont pas disponibles, ils ne fonctionneront pas correctement. Pour plus <a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">d'informations, consultez le mappage des champs vidéo et des listes de lecture Ooyala aux champs Video Cloud</a> .</p>
+    <p>En outre, si vous avez un module complémentaire qui fait des requêtes aux API Ooyala, ceux-ci ne fonctionneront pas dans de nombreux cas, bien que <a href="/ooyala/backlot-video-cloud-cms-connector.html">certains <span translate="No">Backlot API</span> terminaux restent opérationnels</a>. L'API de découverte ne sera pas opérationnelle.</p>
+    <p>Les données analytiques <strong>seront</strong> collectées et envoyées au système Brightcove Analytics.</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="next_steps">Prochaines étapes</h2>
+    <p>Bien que Brightcove s'engage à conserver les vidéos et les listes de lecture de vos lecteurs Ooyala pendant votre transition vers Video Cloud, vous devriez travailler sur un plan pour passer aux joueurs Brightcove afin de tirer pleinement parti de leurs fonctionnalités et de leur personnalisation.</p>
+  </section>
+</article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">Contenu de la page</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  Page mise à jour le 28 sept. 2020
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>Assistance Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">État du système</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contacter le support</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">Documentation</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>Formation</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">Cours en ligne</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">S' inscrire à un cours</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Université de Brightcove</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">BrightCove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contactez-nous</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove, Inc. Tous droits réservés.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">Confidentialité</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">Termes et conditions</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">Avez-vous des questions ? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  
+  <!-- <script src="/assets/js/toc.js"></script> -->
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
+  <script src="/assets/js/talla-init.js"></script>
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>

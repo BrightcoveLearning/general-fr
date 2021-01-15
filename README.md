@@ -1,1 +1,1 @@
-# general-fr
+# jekyll-template
