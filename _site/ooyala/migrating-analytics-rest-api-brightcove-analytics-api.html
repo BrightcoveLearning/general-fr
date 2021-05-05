@@ -1,0 +1,843 @@
+﻿<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Cette rubrique fournit des conseils sur le passage de l'API REST Ooyala Analytics à l'API Video Cloud Analytics. Remarque : cette rubrique s'applique uniquement aux clients Ooyala migrés vers Video Cloud.">
+  
+  <title>Migration de l'API REST Analytics vers l'API Brightcove Analytics</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="logo du produit" style="max-height: 100px;max-width: 232px;"/></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">Sélectionner la langue</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="assistance"/> Contacter le support</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/">État<img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="état du système"/> du système</a></span> <br/>
+
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/ooyala/">Migration depuis Ooyala</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">Migration de l'API REST Analytics vers l'API Brightcove Analytics</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+            <div class="col-sm-3 left-side-bar">
+        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+          <option value="">Autres documents Brightcove</option>
+          
+            
+              <option value="https://support.brightcove.com">Accueil Documentation</option>
+            
+          
+            
+              <option value="https://audience.support.brightcove.com">Audience de Brightcove</option>
+            
+          
+            
+              <option value="https://beacon.support.brightcove.com">Balise Brightcove</option>
+            
+          
+            
+              <option value="https://campaign.support.brightcove.com">Campagne Brightcove</option>
+            
+          
+            
+              <option value="https://engage.support.brightcove.com">Brightcove Engagez</option>
+            
+          
+            
+              <option value="https://live.support.brightcove.com">Brightcove Live</option>
+            
+          
+            
+              <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+            
+          
+            
+              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+            
+          
+            
+              <option value="https://social.support.brightcove.com">Brightcove Social</option>
+            
+          
+            
+              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+            
+          
+            
+              <option value="https://player.support.brightcove.com">Développement du joueur Brightcove</option>
+            
+          
+            
+              <option value="https://apis.support.brightcove.com">API de la plate-forme Video Cloud</option>
+            
+          
+            
+              <option value="https://sdks.support.brightcove.com">SDK pour périphériques Video Cloud</option>
+            
+          
+            
+              <option value="https://integrations.support.brightcove.com">Intégrations et connecteurs CMS</option>
+            
+          
+            
+              <option value="https://general.support.brightcove.com">Informations générales sur Video Cloud</option>
+            
+          
+            
+              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+            
+          
+        </select>
+
+        <nav class="sidenav" id="side_nav">
+          
+            
+            <h5><a href="/index.html">Accueil</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">Informations générales <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/brightcove-product-overview.html">Présentation du produit Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-continuum-overview.html">Présentation du continuum de Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-open-source-projects.html">Projets Open Source</a></li>
+                  
+                
+                  
+                    <li><a href="/general/mpeg-dash-video.html">Vidéo MPEG-DASH</a></li>
+                  
+                
+                  
+                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Groupes et listes de courrier électronique Brightcove</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/developer/index.html">Développeurs <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/developer/concepts-cors.html">Comprendre CORS</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-introducing-json.html">Présentation de JSON</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-debugging-basics.html">Notions de base du débogage JavaScript</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">Le modèle de conception du module JavaScript</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-set-curl.html">Configuration de cURL</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/concepts-using-javascript-promises.html">Utilisation des promesses JavaScript</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/create-jwt.html">Création d'un jeton Web JSON (JWT)</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/debugging-mobile-devices.html">Débogage sur les appareils mobiles</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">Utilisation de MTR (mon traceroute)</a></li>
+                  
+                
+                  
+                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Utilisation de Wireshark pour suivre le trafic réseau</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/ooyala/index.html">Migration de Ooyala <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Docs de migration pour les clients Ooyala</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Migration vers l'API Brightcove Analytics</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Migration vers Video Cloud : Jeux d'annonces</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Migration vers Video Cloud : Adaptateur d'ingestion</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">Adaptateur d'ingestion : Fichiers Manifest CSV</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">Adaptateur d'ingestion : Ingester avec Aspera</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">Adaptateur d'ingestion : Ingestion avec FTPS</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">Adaptateur d'ingestion : Ingester avec OIS 2.5</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">Adaptateur d'ingestion : Ingestion avec l'API Backlot</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">Adaptateur d'ingestion : Ingestion d'actifs distants via MRSS</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">Adaptateur d'ingestion : Ingestion à partir de MRSS hébergé</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Connecteur CMS Backlot/Video Cloud</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">Backlot et Cloud vidéo : Champs vidéo et liste de lecture</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">Adaptateur d'ingestion : Formats de fichier manifeste</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">Adaptateur d'ingestion : Fichiers Manifest XML</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">Adaptateur d'ingestion : Formats de prise en charge</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">Ajout du serveur DNS Brightcove pour les tests</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Authentification pour les demandes d'API Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/trending-now-report-reference.html">Référence du rapport Tendances maintenant</a></li>
+                  
+                
+                  
+                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">Utilisation des lecteurs Ooyala pour le contenu Video Cloud</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/utilities/index.html">Services publics <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/utilities/base-64-encoding-tool.html">Outil de codage Base 64</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/date-converter.html">Convertisseur de date</a></li>
+                  
+                
+                  
+                    <li><a href="/utilities/string-encoder.html">Encodeur de chaîne</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/training/index.html">Entraînement <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/training/online-training-courses.html">Tous les cours de formation en ligne</a></li>
+                  
+                
+                  
+                    <li><a href="/training/register-training.html">S' inscrire à la formation dirigée par un instructeur</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud.html">Formation : Présentation de Video Cloud</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">Formation : Présentation de Video Cloud Analytics</a></li>
+                  
+                
+                  
+                    <li><a href="/training/training-demand-video-cloud-basics.html">Formation : Principes de base du cloud vidéo</a></li>
+                  
+                
+                  
+                    <li><a href="/training/video-cloud-studio-training-videos.html">Vidéos de formation Video Cloud Studio</a></li>
+                  
+                
+                  
+                    <li><a href="/training/brightcove-university.html">Cours de formation à l'Université de Brightcove</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html">Support <strong>+</strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">Problèmes connus</a></li>
+                  
+                
+                  
+                    
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Affichage de la page État du système Brightcove</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">Contacter les ventes</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">Ouverture d'un dossier de support</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Menu de navigation"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">Contenu de la page</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="ouvrir dans un nouvel onglet" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+
+<article class="bcls-article">
+  <h1>Migration de l'API REST Analytics vers l'API Brightcove Analytics</h1>
+  <summary>
+    Cette rubrique fournit des conseils sur le passage de l'API REST Ooyala Analytics à l'API Video Cloud Analytics. <aside class="bcls-aside bcls-aside--information language-editable">Remarque : cette rubrique s'applique <strong>uniquement</strong> aux clients Ooyala migrés vers Video Cloud.</aside>
+  </summary>
+  <section class="bcls-section">
+    <h2 id="Introduction">Introduction</h2>
+    
+    <p>Video Cloud <span translate="No">Analytics API</span> est assez similaire à l'API REST Ooyala Analytics.</p>
+    
+    <p>Notez également que le module Analytics de Video Cloud Studio inclut un <a href="https://studio.support.brightcove.com/analytics/creating-custom-analytics-reports.html">générateur de rapports personnalisés</a> robuste qui, dans de nombreux cas, peut rendre inutile l'utilisation de l'API.</p>
+    
+    <p>Les sections ci-dessous correspondent aux différents aspects des deux API :</p>
+    
+    <ul>
+      <li><a href="#Authentication">L' authentification</a></li>
+      <li><a href="#Reports">Rapports</a></li>
+      <li><a href="#Parameters">Paramètres</a></li>
+      <li><a href="#Dimensions">Dimensions</a></li>
+      <li><a href="#Filters">Filtres</a></li>
+      <li><a href="#Metrics">Mesures</a></li>
+    </ul>
+    </section>
+    
+    <section class="bcls-section">
+    <h2 id="Authentication">Authentification</h2>
+    
+    <p>L'authentification des requêtes API Brightcove est traitée légèrement différemment de celle des API REST Ooyala.  <a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Pour plus de détails, reportez-vous à Authentification pour les requêtes d'API Brightco</a> </p>
+    </section>
+    
+    <section class="bcls-section">
+    <h2 id="Reports">Rapports</h2>
+    
+    <p>Le seul <code translate="No">/reports</code> Le point de terminaison pour l'API REST Ooyala Analytics correspond très étroitement à Brightcove <span translate="No">Analytics API</span> <code translate="No">/data</code> point final. La principale différence est que l'API Ooyala permet à la fois <code translate="No">GET</code> et <code translate="No">POST</code> , ce dernier a utilisé pour transmettre des données dans le corps de la requête plutôt que des paramètres d'URL, ce qui permet des chaînes de données plus longues.</p>
+    </section>
+    
+    <section class="bcls-section">
+    <h2 id="Parameters">Paramètres</h2>
+    
+    <p>Les paramètres des requêtes sont similaires pour les deux API. Ils sont détaillés dans le tableau ci-dessous pour vous montrer où se situent les différences.</p>
+    
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">Paramètres</caption>
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Paramètre Ooyala</th>
+          <th>Paramètre Brightcove</th>
+          <th>Docs</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">accounts</code> - inclus en tant que paramètre dans tous les rapports sur plusieurs comptes</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">report_type</code></td>
+          <td>Aucune, mais l'API Brightcove offre des points de terminaison supplémentaires pour les rapports d'engagement et d'analyse en direct</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/overview-analytics-api-v1.html">Vue d'ensemble : API Analytics</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">start_date</code></td>
+          <td><code translate="No">from</code> les deux paramètres sont similaires et acceptent tous deux des valeurs dans le formulaire <samp translate="No">YYYY-MM-DD</samp> ; le param Brightcove accepte également les dates d'époque en millisecondes et les dates relatives telles que <samp translate="No">-3d</samp></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">end_date</code></td>
+          <td><code translate="No">to</code> les deux paramètres sont similaires et acceptent tous deux des valeurs dans le formulaire <samp translate="No">YYYY-MM-DD</samp> ; le param Brightcove accepte également les dates d'époque en millisecondes et les dates relatives telles que <samp translate="No">-3d</samp></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">metrics</code></td>
+          <td><code translate="No">fields</code> - les deux paramètres sont essentiellement identiques ; l'API Brighcove utilise également <code translate="No">metrics</code> pour les requêtes Live Analytics ; reportez-vous à <a href="#Metrics">Metrics</a> pour plus d'informations sur les mesures disponibles</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">dimensions</code></td>
+          <td><code translate="No">dimensions</code> - les deux paramètres sont essentiellement identiques ; l'API Brighcove utilise également <code translate="No">metrics</code> pour les requêtes Live Analytics ; voir <a href="#Dimensions">Dimensions</a> pour plus d'informations sur les dimensions disponibles</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">filters</code></td>
+          <td><code translate="No">where</code> - en dehors du nom, les deux paramètres sont essentiellement identiques ; voir <a href="#Filters">Filtres</a> ci-dessous pour plus d'informations</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">time_segment</code></td>
+          <td>none - l'API Brightcove possède <code translate="No">date</code> et des <code translate="No">date_hour</code> dimensions qui fournissent une segmentation temporelle similaire, ainsi que des points de terminaison d'engagement pour les périodes au cours des 32 jours précédents, qui fournissent des vues sur chaque 100e partie de la vidéo</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">sort</code></td>
+          <td><code translate="No">sort</code> les paramètres sont identiques, sauf que l'API Ooyala permet le tri sur plusieurs métriques</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">limit</code></td>
+          <td><code translate="No">limit</code> - les paramètres sont identiques à l'exception de la limite de 1000 sur le param API Ooyala</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">page</code></td>
+          <td><code translate="No">offset</code> - les paramètres prennent des valeurs différentes mais fonctionnent de la même manière pour la pagination des jeux de données</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">reconciled</code> - étant donné que les données analytiques proviennent de sources différentes selon les calendriers, l'API Brightcove place les données analytiques récentes dans un compartiment « non réconcilié » pendant qu'elles sont encore mises à jour, et les transfère vers un compartiment « historique » ; le param vous permet de choisir entre ces seaux</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">bucket_limit</code> - s'applique uniquement aux requêtes Live Analytics ; avec <code translate="No">bucket_duration</code> , ces fonctions d'une manière quelque peu similaire au <code translate="No">time_segment</code> param de l'API Ooyala</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">bucket_duration</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#params">Vue d'ensemble des dimensions, des champs et des paramètres</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </section>
+    
+    <section class="bcls-section">
+    <h2 id="Dimensions">Dimensions :</h2>
+    
+    <p>Les API Ooyala et Brightcove Analytics regroupent les données en compartiments appelés « dimensions ». Ils sont utilisés de manière similaire, mais les API ont des règles quelque peu différentes quant à la façon dont plusieurs dimensions peuvent être combinées, et Brightcove a un ensemble plus large de dimensions. Pour plus d'informations sur l'API Brightcove, reportez-vous à la section <a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#supported_dimension_combinations">Combinaisons de dimensions prises</a>  Le tableau ci-dessous fournit une comparaison détaillée.</p>
+    
+    <table class="bcls-table">
+      <caption class="bcls-caption--table">Dimensions :</caption>
+      <thead class="bcls-table__head">
+        <tr>
+          <th>Ooyala Dimension</th>
+          <th>Dimension Brightcove</th>
+          <th>Docs</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td><code translate="No">asset</code></td>
+          <td><code translate="No">video</code> - la <code translate="No">video</code> dimension Brightcove ne couvre que les actifs VOD ; il y a aussi une <code translate="No">live_stream</code> dimension</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-video.html">Dimension vidéo</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">country</code></td>
+          <td><code translate="No">country</code> - les dimensions sont essentiellement identiques</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-country.html">Dimension Pays</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">region</code></td>
+          <td><code translate="No">region</code> - les dimensions sont essentiellement identiques, sauf que la dimension Brightcove inclut les États américains</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-region.html">Dimension de région</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">dma</code></td>
+          <td>aucun</td>
+          <td>s. o.</td>
+        </tr>
+        <tr>
+          <td><code translate="No">state</code></td>
+          <td><code translate="No">region</code> - l'API Brightcove inclut les états américains dans la <code translate="No">region</code> dimension</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-region.html">Dimension de région</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">device_type</code></td>
+          <td><code translate="No">device_type</code> - les dimensions sont essentiellement identiques</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-devicetype.html">Dimension du type de périphérique</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">domain</code></td>
+          <td><code translate="No">destination_domain</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-destinationdomain.html">Dimension de domaine de destination</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">url</code></td>
+          <td><code translate="No">device_os</code> - essentiellement le même</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-deviceos.html">Dimension du système d'exploitation</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">os</code></td>
+          <td><code translate="No">destination_domain</code> - pas exactement le même, mais l'équivalent le plus proche</td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-destinationdomain.html">Dimension de domaine de destination</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">pcode</code></td>
+          <td><code translate="No">account</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-devicetype.html">Dimension du compte</a></td>
+        </tr>
+        <tr>
+          <td><code translate="No">player_id</code></td>
+          <td><code translate="No">player</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-player.html">Dimension du joueur</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">browser_type</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-browsertype.html">Dimension Type de navigateur</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">date</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-date.html">Dimension de date</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">date_hour</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-datehour.html">Dimension date-heure</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">device_manufacturer</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-devicemanufacturer.html">Dimension du fabricant du périphérique</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">referrer_domain</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-referrerdomain.html">Dimension de domaine référent</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">search_terms</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-searchterms.html">Dimension des termes de recherche</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">social_platform</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-socialplatform.html">Dimension Plateforme Sociale</a></td>
+        </tr>
+        <tr>
+          <td>aucun</td>
+          <td><code translate="No">source_type</code></td>
+          <td><a href="https://apis.support.brightcove.com/analytics/dimension-guides/dimension-sourcetype.html">Dimension de type source</a></td>
+        </tr>
+      </tbody>
+    </table>
+    </section>
+    
+    <section class="bcls-section">
+    <h2 id="Filters">Filtres</h2>
+    
+    <p>Les filtres fonctionnent à peu près de la même manière dans les deux API, spécifiées en termes de :</p>
+    
+    <pre>
+      <code class="language-http" translate="No">
+        // Ooyala
+        filter={dimension1}=={value1};{dimension2}=={value2}
+      
+        // Brightcove
+        where={dimension1}=={value1};{dimension2}=={value2}
+      </code></pre>
+    </section>
+    
+    <section class="bcls-section">
+    <h2 id="Metrics">Mesures</h2>
+    
+    <p>Le <code translate="No">metrics</code> (pour l'API Brightcove : <code translate="No">fields</code> ) renvoyé dans les rapports varie en fonction de la ou des dimensions demandées pour l'API Brightcove Analytics. Vous pouvez utiliser l'outil intégré dans <a href="https://apis.support.brightcove.com/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html#metrics">Dimensions et champs</a> pour voir quels champs peuvent être renvoyés pour une dimension particulière ou une combinaison de cotes.</p>
+    
+    <p>Notez que bien que l'API Ooyala renvoie toutes les mesures si aucune n'est spécifiée, mais l'API Brightcove renvoie seulement un petit ensemble de mesures par défaut qui varient selon la dimension (combinaison), sauf si vous incluez le <code translate="No">fields</code> dans la requête.</p>
+    
+    <p>Les champs Brightcove contiennent des équivalents pour toutes les mesures Ooyala à l'exception de :</p>
+    
+    <ul>
+      <li><code translate="No">uniq_plays_requested</code></li>
+      <li><code translate="No">uniq_displays</code></li>
+      <li><code translate="No">uniq_video_starts</code></li>
+    </ul>
+    
+    <p>Brightcove <span translate="No">Analytics API</span> peut également renvoyer le nombre d'autres mesures non disponibles dans Ooyala analytics.</p>
+    </section>
+    </article>
+    
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">Contenu de la page</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  Page mise à jour le 28 sept. 2020
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>Assistance Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">État du système</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contacter le support</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">Documentation</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>Formation</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">Cours en ligne</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">S' inscrire à un cours</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Université de Brightcove</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">BrightCove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">Contactez-nous</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove, Inc. Tous droits réservés.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">Confidentialité</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">Termes et conditions</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">Avez-vous des questions ? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  
+  <!-- <script src="/assets/js/toc.js"></script> -->
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
+  <script src="/assets/js/talla-init.js"></script>
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>
