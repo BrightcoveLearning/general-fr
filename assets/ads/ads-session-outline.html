@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 
 <head>
@@ -7,8 +7,8 @@
 </head>
 
 <body>
-  <h1>***Notes d'information sur la réunion David</h1>
-  <br/>
+  <h1>*** Notes d'informations sur les annonces de David Meeting ***</h1>
+  <br />
   <h1>Vocabulaire de base</h1>
   <h3>Types d'annonces</h3>
   <ul>
@@ -27,12 +27,12 @@
       <p>VAST : Détails de l'annonce individuelle ; VMAP pointe vers un document VAST contenant des informations sur l'annonce</p>
     </li>
     <li>Exemple VAST à partir de l'onglet Réseau dans les outils de développement Chrome</li>
-		    <p><img src="vast-response.png"/></p>
+		    <p><img src="vast-response.png"></p>
     <li>
       <p>VPAID : Comme VAST, mais une norme pour les annonces interactives ; l'annonce contient un quiz ou un jeu maladroit (pas encore de prise en charge de BC Player)</p>
     </li>
   </ul>
-  <h1>Informations sur le plugin IMA</h1>
+  <h1>Informations sur le plug-in IMA</h1>
   <ul>
     <li>
       <p>Contrainte IMA : 2 versions de la bibliothèque IMA, version Flash ou HTML, ne peuvent pas utiliser à la fois</p>
@@ -49,7 +49,7 @@
         <li>Ajouter IMA Plugin au lecteur</li>
         <li>Fournir ServerURL à la balise d'annonce</li>
         <li>Exemple de configuration</li>
-		    <p><img src="plugin-simple-config.png"/></p>
+		    <p><img src="plugin-simple-config.png"></p>
       </ul>
     </li>
     <li>
@@ -58,7 +58,7 @@
         <li>Inclure JavaScript pour le plugin</li>
         <li>Appelez le plugin IMA et les options de passe à ce stade
           <ul>
-            <li>MyPlayer.IMA3 ({serverURL :...})</li>
+            <li>myPlayer.ima3({ serverURL: ...})</li>
           </ul>
         </li>
       </ul>
@@ -68,9 +68,9 @@
     	<li>Utilisez la bibliothèque Google Publisher Tags (GPT) et remplira automatiquement les blocs publicitaires compagnons</li>
     	<li>Bon tutoriel disponible sur le site IMA</li>
     	<li>Utiliser l'implémentation intégrée dans la page pour les annonces compagnons car iframe ne peut pas interagir avec la page parent</li>
-    	<li>Exemple : JS et HTML pour les annonces complémentaires</li>
-		    <p><img src="companion-ad-script.png"/></p>
-		    <p><img src="companion-ad-html.png"/></p>
+    	<li>Exemple : JS et HTML pour les annonces complémentaires</li>
+		    <p><img src="companion-ad-script.png"></p>
+		    <p><img src="companion-ad-html.png"></p>
     </ul>
   </ul>
   <h1>Ressources</h1>
@@ -81,7 +81,7 @@
     	<ul><li>ASSUREZ-VOUS de tester si l'URL fonctionne avant de l'utiliser avec BC Player, vérifie si le serveur publicitaire est compatible ; si cela ne fonctionne pas ici, il ne fonctionnera pas dans BC Player</li></ul>
     </li>
   </ul>
-  <h1>Ceci est l' « API de publicité » de Brightcove Player</h1>
+  <h1>Il s'agit de "l'API publicitaire" de Brightcove Player</h1>
   <ul>
   	<li>https://github.com/videojs/videojs-contrib-ads : Intéressant pour les PARTENAIRES qui rédigent leur propre implémentation d'annonces</li>
     <li>Du site « Le plugin videojs-contrib-ads fournit des fonctionnalités communes nécessaires aux bibliothèques de publicité vidéo travaillant avec video.js. Il prend en charge un certain nombre de préoccupations pour vous, réduisant le code que vous devez écrire pour l'intégration de votre annonce.«</li>

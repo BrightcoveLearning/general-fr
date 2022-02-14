@@ -1,402 +1,7 @@
-﻿<!doctype html>
-<html lang="fr">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  
-  <title>Débogage sur les appareils mobiles</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
-  <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
-  <script src="/assets/js/sajari-head.js"></script>
-</head>
-
-<body class="body">
-
-<header>
-  <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="logo du produit" style="max-height: 100px;max-width: 232px;"/></a>
-<!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">Sélectionner la langue</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
-
-<script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
-</script>
-
-
-
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="assistance"/> Contacter le support</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/">État<img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="état du système"/> du système</a></span> <br/>
-
-  </div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/developer/">Développeurs</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">Débogage sur les appareils mobiles</li>
-    </ol>
-  </nav>
-</header>
-<div class="container">
-    <div class="row">
-            <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-          <option value="">Autres documents Brightcove</option>
-          
-            
-              <option value="https://support.brightcove.com">Accueil Documentation</option>
-            
-          
-            
-              <option value="https://audience.support.brightcove.com">Audience de Brightcove</option>
-            
-          
-            
-              <option value="https://beacon.support.brightcove.com">Balise Brightcove</option>
-            
-          
-            
-              <option value="https://campaign.support.brightcove.com">Campagne Brightcove</option>
-            
-          
-            
-              <option value="https://engage.support.brightcove.com">Brightcove Engagez</option>
-            
-          
-            
-              <option value="https://live.support.brightcove.com">Brightcove Live</option>
-            
-          
-            
-              <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-            
-          
-            
-              <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-            
-          
-            
-              <option value="https://social.support.brightcove.com">Brightcove Social</option>
-            
-          
-            
-              <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
-            
-          
-            
-              <option value="https://player.support.brightcove.com">Développement du joueur Brightcove</option>
-            
-          
-            
-              <option value="https://apis.support.brightcove.com">API de la plate-forme Video Cloud</option>
-            
-          
-            
-              <option value="https://sdks.support.brightcove.com">SDK pour périphériques Video Cloud</option>
-            
-          
-            
-              <option value="https://integrations.support.brightcove.com">Intégrations et connecteurs CMS</option>
-            
-          
-            
-              <option value="https://general.support.brightcove.com">Informations générales sur Video Cloud</option>
-            
-          
-            
-              <option value="https://zencoder.support.brightcove.com">Zencoder</option>
-            
-          
-        </select>
-
-        <nav class="sidenav" id="side_nav">
-          
-            
-            <h5><a href="/index.html">Accueil</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">Informations générales <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/general/brightcove-product-overview.html">Présentation du produit Brightcove</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-continuum-overview.html">Présentation du continuum de Brightcove</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-open-source-projects.html">Projets Open Source</a></li>
-                  
-                
-                  
-                    <li><a href="/general/mpeg-dash-video.html">Vidéo MPEG-DASH</a></li>
-                  
-                
-                  
-                    <li><a href="/general/brightcove-forum-groups-and-email-lists.html">Groupes et listes de courrier électronique Brightcove</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/developer/index.html">Développeurs <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/developer/concepts-cors.html">Comprendre CORS</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-introducing-json.html">Présentation de JSON</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-debugging-basics.html">Notions de base du débogage JavaScript</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-javascript-module-design-pattern.html">Le modèle de conception du module JavaScript</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-set-curl.html">Configuration de cURL</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/concepts-using-javascript-promises.html">Utilisation des promesses JavaScript</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/create-jwt.html">Création d'un jeton Web JSON (JWT)</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/debugging-mobile-devices.html">Débogage sur les appareils mobiles</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-mtr-to-look-at-network-traffic.html">Utilisation de MTR (mon traceroute)</a></li>
-                  
-                
-                  
-                    <li><a href="/developer/using-wireshark-track-network-traffic-debugging.html">Utilisation de Wireshark pour suivre le trafic réseau</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/ooyala/index.html">Migration de Ooyala <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/ooyala/migration-docs-ooyala-customers.html">Docs de migration pour les clients Ooyala</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-analytics-rest-api-brightcove-analytics-api.html">Migration vers l'API Brightcove Analytics</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ad-sets.html">Migration vers Video Cloud : Jeux d'annonces</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/migrating-video-cloud-ingestion-adapter.html">Migration vers Video Cloud : Adaptateur d'ingestion</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-csv-manifest-files.html">Adaptateur d'ingestion : Fichiers Manifest CSV</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-aspera.html">Adaptateur d'ingestion : Ingester avec Aspera</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ftps.html">Adaptateur d'ingestion : Ingestion avec FTPS</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-ois-25.html">Adaptateur d'ingestion : Ingester avec OIS 2.5</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-backlot-api.html">Adaptateur d'ingestion : Ingestion avec l'API Backlot</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remote-assets-mrss.html">Adaptateur d'ingestion : Ingestion d'actifs distants via MRSS</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-ingesting-remotely-hosted-mrss-feed.html">Adaptateur d'ingestion : Ingestion à partir de MRSS hébergé</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-video-cloud-cms-connector.html">Connecteur CMS Backlot/Video Cloud</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/backlot-and-video-cloud-video-and-playlist-fields.html">Backlot et Cloud vidéo : Champs vidéo et liste de lecture</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-manifest-file-formats.html">Adaptateur d'ingestion : Formats de fichier manifeste</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-adapter-xml-manifest-files.html">Adaptateur d'ingestion : Fichiers Manifest XML</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-ingestion-supported-ingest-formats.html">Adaptateur d'ingestion : Formats de prise en charge</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-adding-brightcove-dns-server-testing.html">Ajout du serveur DNS Brightcove pour les tests</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/ooyala-video-cloud-migration-authentication-brightcove-api-requests.html">Authentification pour les demandes d'API Brightcove</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/trending-now-report-reference.html">Référence du rapport Tendances maintenant</a></li>
-                  
-                
-                  
-                    <li><a href="/ooyala/using-ooyala-players-deliver-video-cloud-content.html">Utilisation des lecteurs Ooyala pour le contenu Video Cloud</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/utilities/index.html">Services publics <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/utilities/base-64-encoding-tool.html">Outil de codage Base 64</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/date-converter.html">Convertisseur de date</a></li>
-                  
-                
-                  
-                    <li><a href="/utilities/string-encoder.html">Encodeur de chaîne</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html">Entraînement <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">Tous les cours de formation en ligne</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">S' inscrire à la formation dirigée par un instructeur</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud.html">Formation : Présentation de Video Cloud</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-introduction-video-cloud-analytics.html">Formation : Présentation de Video Cloud Analytics</a></li>
-                  
-                
-                  
-                    <li><a href="/training/training-demand-video-cloud-basics.html">Formation : Principes de base du cloud vidéo</a></li>
-                  
-                
-                  
-                    <li><a href="/training/video-cloud-studio-training-videos.html">Vidéos de formation Video Cloud Studio</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">Cours de formation à l'Université de Brightcove</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html">Support <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/support/known-issues-studio-brightcove-player-and-apis.html">Problèmes connus</a></li>
-                  
-                
-                  
-                    
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">Affichage de la page État du système Brightcove</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">Contacter les ventes</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">Ouverture d'un dossier de support</a></li>
-                  
-                
-              </ul>
-            
-          
-      </nav>
-    </div>
-    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
-  <!-- bootstrap layout -->
-
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Menu de navigation"/></p>
-
-<!-- search bar -->
-<div id="nav-search-box" style="margin-top: 1rem;"></div>
-<!-- in-page navigation for narrow screens -->
-<details class="centered-inpage-nav" id="centered_inpage_nav">
-  <summary><h6 class="toc">Contenu de la page</h6></summary>
-  <nav id="centered_toc"></nav>
-  <ul id="centered_in_page_toc" class="list-none"></ul>
-</details>
-<!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="ouvrir dans un nouvel onglet" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
+---
+title: Débogage sur les appareils mobiles
+parent: Developers
+---
 
 <article class="bcls-article">
   <h1>Débogage sur les appareils mobiles</h1>
@@ -409,7 +14,7 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       <li>Débogage sur les appareils Android</li>
       <li>Utilisation de Charles sur les appareils mobiles</li>
     </ul>
-    <aside class="bcls-aside bcls-aside--information language-editable">Ce document sert de point de départ pour les développeurs de déboguer sur les appareils mobiles. Il ne couvre pas toutes les méthodes de débogage mobile. Pour plus d'informations sur le débogage en général, consultez la documentation <a href="/developer/concepts-javascript-debugging-basics.html">JavaScript Debogging Basics</a> .</aside>
+    <aside class="bcls-aside bcls-aside--information">Ce document sert de point de départ aux développeurs pour déboguer sur les appareils mobiles. Il ne couvre pas toutes les méthodes de débogage mobile. Pour plus d'informations sur le débogage en général, consultez la documentation de base du débogage <a href="/developer/concepts-javascript-debugging-basics.html">JavaScript</a>.</aside>
   </section>
   <section class="bcls-section">
     <h2 id="iOS_debugging">Débogage iOS</h2>
@@ -420,42 +25,42 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
           <li>Safari version 6+ sous Mac macOS</li>
           <li>iPhone ou iPad avec iOS 6+</li>
         </ul>
-        <aside class="bcls-aside bcls-aside--information language-editable">Remarque : si vous êtes sous iOS 10.3 ou version ultérieure, ouvrez les paramètres et accédez à Général &gt; À propos &gt; Paramètres de confiance du certificat, recherchez le certificat Charles Proxy et activez le certificat pour activer la confiance totale pour celui-ci.</aside>
+        <aside class="bcls-aside bcls-aside--information">Remarque : si vous utilisez iOS 10.3 ou une version ultérieure, ouvrez les paramètres et accédez à Général &gt; À propos &gt; Paramètres de confiance du certificat, recherchez le certificat Charles Proxy, puis activez le certificat Charles Proxy pour activer la confiance totale.</aside>
       </div>
       <div class="BCL-subsection">
         <h3>Utilisation du débogage à distance Safari</h3>
         <p>La mise à jour iOS 6 d'Apple a introduit Safari Remote Debogging, qui vous permet de déboguer des pages Web dans l'application Safari sur les appareils iOS. Pour commencer, suivez les étapes ci-dessous :</p>
         <ol>
           <li>Connectez votre appareil iOS à votre machine via un câble USB.</li>
-          <li>Sur votre appareil, ouvrez l'application <strong>Paramètres</strong> . Sélectionnez <strong>Safari</strong>, faites défiler jusqu'au bas de la page et ouvrez le menu <strong>Avancé</strong>.  Activez l'option <strong>Inspecteur Web</strong> .
-            <figure class="bcls-figure"><img class="bcls-image" alt="Inspecteur Web" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/01-iOS.png"/>
+          <li>Sur votre appareil, ouvrez le <strong>Paramètres</strong> application. Sélectionner <strong>Safari</strong> , faites défiler vers le bas de la page et ouvrez le <strong>Avancée</strong> menu. Activer le <strong>Inspecteur Web</strong> option.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Web Inspector" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/01-iOS.png" />
               <figcaption class="bcls-caption--image">Inspecteur Web</figcaption>
             </figure>
           </li>
           <li>Toujours sur votre appareil, ouvrez l'application <strong>Safari</strong> et accédez à n'importe quelle page Web.</li>
-          <li>Sur votre Mac, lancez <strong>Safari</strong>, ouvrez les <strong>Préférences (&gt; Préférences</strong><strong>Safari</strong>) et accédez à la section <strong>Avancé</strong>.  Activez le <strong>menu Afficher le développement dans l'option de la barre de menus</strong> .
-            <figure class="bcls-figure"><img class="bcls-image" alt="Afficher le menu Développer" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/02-iOS.png"/>
+          <li>Sur votre Mac, lancez <strong>Safari</strong>, ouvrez les <strong>Préférences</strong> (<strong>Safari &gt; Préférences</strong>) et accédez à la section <strong>Avancée</strong> section. Activez le menu <strong>Afficher le développement dans l'</strong> option de barre de menus.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Show Develop Menu" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/02-iOS.png" />
               <figcaption class="bcls-caption--image">Afficher le menu Développer</figcaption>
             </figure>
           </li>
-          <li>Ouvrez le menu <strong>Développer</strong> . Vous verrez votre appareil iOS dans la liste. Lorsque vous passez la souris sur le nom de votre appareil, l'URL du site que vous avez consultée s'affiche sur votre appareil.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Trouver l'appareil" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/03-iOS.png"/>
+          <li>Ouvrez le <strong>Développer</strong> menu. Vous verrez votre appareil iOS dans la liste. Lorsque vous passez la souris sur le nom de votre appareil, l'URL du site que vous avez consultée s'affiche sur votre appareil.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Find the Device" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/03-iOS.png" />
               <figcaption class="bcls-caption--image">Trouver l'appareil</figcaption>
             </figure>
           </li>
           <li>Sélectionnez l'URL et une fenêtre <strong>Web Inspector</strong> s'ouvre, vous permettant de prévisualiser, d'inspecter et de déboguer le contenu de votre navigateur mobile à partir de votre bureau.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Débogage sur le Bureau" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-iOS.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Debug on Desktop" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-iOS.png" />
               <figcaption class="bcls-caption--image">Débogage sur le Bureau</figcaption>
             </figure>
           </li>
-          <li>Dans la section <strong>Ressources</strong> , vous pouvez prévisualiser et inspecter la page Web. Le survol des éléments dans l' <strong>Inspecteur Web</strong> met en surbrillance les éléments correspondants dans le navigateur de votre appareil iOS.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Inspection des éléments" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-iOS.png"/>
+          <li>Dans le <strong>Ressources</strong> section, vous pouvez prévisualiser et inspecter la page Web. Le survol des éléments dans l' <strong>Inspecteur Web</strong> met en surbrillance les éléments correspondants dans le navigateur de votre appareil iOS.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Inspecting Elements" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-iOS.png" />
               <figcaption class="bcls-caption--image">Inspection des éléments</figcaption>
             </figure>
           </li>
           <li>Vous pouvez également utiliser les sections <strong>Débogueur</strong> et <strong>Console</strong> pour déboguer davantage votre page en définissant des points d'arrêt, en journalisant des données, etc.</li>
         </ol>
-        <aside class="bcls-aside bcls-aside--information language-editable">Pour plus d'informations sur l'utilisation de Safari Web Inspector, consultez la <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html">documentation développeur d'Apple</a>.</aside>
+        <aside class="bcls-aside bcls-aside--information">Pour plus d'informations sur l'utilisation de Safari Web Inspector, visitez le <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Introduction/Introduction.html">La documentation développeur d'Apple</a>.</aside>
       </div>
     </div>
   </section>
@@ -476,16 +81,15 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <h3>Activation du débogage sur votre appareil</h3>
         <p>Avant de pouvoir commencer à déboguer du contenu sur votre appareil, vous devez activer le débogage USB dans les paramètres de votre appareil.</p>
         <ol>
-          <li>Si vous exécutez Android 4.2+, vous devez activer les <strong>options développeur</strong> de votre appareil avant de pouvoir activer le débogage USB. Sur votre appareil, ouvrez l'application <strong>Paramètres</strong> et sélectionnez le menu <strong>À propos du téléphone</strong> . Localisez le <strong>numéro de construction</strong> de votre appareil et touchez-le sept fois.
-            <aside class="bcls-aside bcls-aside--tip">Si vous exécutez une ancienne version d'Android, vous pouvez activer le débogage USB en accédant directement à Paramètres &gt; Options du développeur.</aside>
+          <li>Si vous exécutez Android 4.2+, vous devez activer les <strong>options développeur</strong> de votre appareil avant de pouvoir activer le débogage USB. Sur votre appareil, ouvrez le <strong>Paramètres</strong> l'application et sélectionnez le <strong>A propos du téléphone</strong> menu. Localisez le <strong>numéro de construction</strong> de votre appareil et touchez-le sept fois. <aside class="bcls-aside bcls-aside--tip">Si vous utilisez une ancienne version d'Android, vous pouvez activer le débogage USB en allant directement dans Paramètres&gt; Options de développeur.</aside>
           </li>
           <li>Appuyez sur le bouton <strong>Précédent</strong> de votre appareil et vous verrez le menu <strong>Options du développeur</strong> répertorié dans les Paramètres.
-            <figure class="bcls-figure"><img width="400" class="bcls-image--no-border" alt="Obtenir les options du développeur" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/01-android.png"/>
+            <figure class="bcls-figure"><img width="400" class="bcls-image--no-border" alt="Get to Developer Options" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/01-android.png" />
               <figcaption class="bcls-caption--image">Obtenir les options du développeur</figcaption>
             </figure>
           </li>
           <li>Ouvrez le menu <strong>Options du développeur</strong> et cochez la case pour activer le <strong>débogage USB</strong>.
-            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Activer le débogage USB" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/02-android.png"/>
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Enable USB Debugging" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/02-android.png" />
               <figcaption class="bcls-caption--image">Activer le débogage USB</figcaption>
             </figure>
           </li>
@@ -495,31 +99,31 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <h3>Débogage à distance à l'aide de Chrome pour Android</h3>
         <p>Maintenant que le débogage USB est activé sur votre appareil, procédez comme suit pour démarrer le débogage à distance avec Chrome :</p>
         <ol>
-          <li>Sur votre ordinateur, lancez <strong>Chrome</strong> et accédez à <code translate="No">about:inspect</code>. Sur la page <strong>Périphériques</strong> , activez l'option <strong>Découvrir les périphériques USB</strong> .
-            <figure class="bcls-figure"><img class="bcls-image" alt="Découvrir les périphériques USB" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/03-android.png"/>
+          <li>Sur votre ordinateur, lancez <strong>Chrome</strong> et accédez à <code translate="No">about:inspect</code>. Sur le <strong>Dispositifs</strong> page, activez la <strong>Découvrir les périphériques USB</strong> option.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Discover USB Devices" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/03-android.png" />
               <figcaption class="bcls-caption--image">Découvrir les périphériques USB</figcaption>
             </figure>
           </li>
           <li>Connectez votre appareil à votre machine via un câble USB. Sur votre appareil, une boîte de dialogue vous demandera si vous souhaitez autoriser le débogage USB. Choisissez <strong>OK</strong> pour permettre à votre ordinateur de se connecter à votre appareil.
-            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Autoriser la connexion au périphérique" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-android.png"/>
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Allow Connection to Device" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-android.png" />
               <figcaption class="bcls-caption--image">Autoriser la connexion au périphérique</figcaption>
             </figure>
-            <aside class="bcls-aside bcls-aside--information language-editable">Si vous êtes sur un ordinateur Windows, vous devrez peut-être installer des pilotes USB. Pour plus d'informations, consultez la <a href="//developer.android.com/tools/extras/oem-usb.html">documentation du développeur Android</a>.</aside>
+            <aside class="bcls-aside bcls-aside--information">Si vous êtes sur une machine Windows, vous devrez peut-être installer des pilotes USB. Pour plus d'informations, consultez la documentation du développeur <a href="//developer.android.com/tools/extras/oem-usb.html">Android</a>.</aside>
           </li>
           <li>Sur votre appareil, ouvrez l'application <strong>Chrome</strong> et accédez à une page Web.</li>
           <li>Revenir à <strong>Chrome</strong> sur votre ordinateur. Sur la <code translate="No">about:inspect</code> page, vous devriez voir votre appareil connecté. Sous le nom de votre appareil, vous pourrez voir une liste de toutes les pages ouvertes dans Chrome sur votre appareil.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Périphériques connectés" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-android.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Connected Devices" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-android.png" />
               <figcaption class="bcls-caption--image">Périphériques connectés</figcaption>
             </figure>
           </li>
-          <li>Pour commencer le débogage d'une page Web, sélectionnez le lien <strong>Inspecter</strong> sous l'URL de la page. Cela ouvrira les <strong>outils de développement</strong>de Chrome.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Inspecter la page Web" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/06-android.png"/>
+          <li>Pour commencer le débogage d'une page Web, sélectionnez le lien <strong>Inspecter</strong> sous l'URL de la page. Cela ouvrira les outils de <strong>développement de Chrome</strong>.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Inspect Web Page" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/06-android.png" />
               <figcaption class="bcls-caption--image">Inspecter la page Web</figcaption>
             </figure>
           </li>
-          <li>À gauche de l'onglet <strong>Eléments</strong> , vous pouvez sélectionner l'icône du périphérique pour ouvrir la fonction Screencast de DevTool. Cela vous permet d'ouvrir un aperçu en direct du contenu tel qu'il apparaît sur votre appareil mobile. Pour plus d'informations sur la façon dont vous pouvez utiliser le screencasting pour interagir avec votre appareil, consultez <a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging#screencasting">la documentation de Google</a>.</li>
+          <li>A gauche du <strong>Éléments</strong> onglet, vous pouvez sélectionner l'icône de l'appareil pour ouvrir la fonction Screencast de DevTool. Cela vous permet d'ouvrir un aperçu en direct du contenu tel qu'il apparaît sur votre appareil mobile. Pour plus d'informations sur la façon dont vous pouvez utiliser le screencasting pour interagir avec votre appareil, consultez <a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging#screencasting">la documentation de Google</a>.</li>
         </ol>
-        <aside class="bcls-aside bcls-aside--information language-editable">Pour plus d'informations sur l'utilisation des outils de développement Chrome, consultez la <a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging">documentation Google pour les développeurs</a>.</aside>
+        <aside class="bcls-aside bcls-aside--information">Pour plus d'informations sur l'utilisation des outils de développement Chrome, consultez la page <a href="https://developers.google.com/chrome-developer-tools/docs/remote-debugging">Documentation développeur de Google</a>.</aside>
       </div>
     </div>
   </section>
@@ -541,38 +145,38 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <p>Suivez les étapes ci-dessous pour faire fonctionner Charles sur votre machine.</p>
         <ol>
           <li><a href="//www.charlesproxy.com/download/">Téléchargez</a> et installez Charles sur votre ordinateur.</li>
-          <li>Sur votre ordinateur, exécutez <strong>Charles</strong>. Dans le menu, sélectionnez <strong>Paramètres du &gt; proxy proxy</strong>. Assurez-vous qu'un port a été attribué (p. ex. 8888) et que l'option <strong>Activer le proxy HTTP transparent</strong> est sélectionnée.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Paramètres du proxy" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/proxy-settings.png"/>
+          <li>Sur votre ordinateur, exécutez <strong>Charles</strong>. Dans le menu, sélectionnez <strong>Proxy &gt; Paramètres proxy</strong>. Assurez-vous qu'un port a été attribué (par exemple, 8888) et le <strong>Activer le proxy HTTP transparent</strong> l'option est sélectionnée.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Proxy settings" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/proxy-settings.png" />
               <figcaption class="bcls-caption--image">Paramètres du proxy</figcaption>
             </figure>
           </li>
           <li>Sélectionnez <strong>OK</strong> pour enregistrer les modifications et fermer la boîte de dialogue.</li>
-          <li>Dans le menu, sélectionnez <strong>Proxy &gt; SSL Proxy Settings</strong>. Assurez-vous que l'option <strong>Activer le proxy SSL</strong> est sélectionnée.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Paramètres du proxy SSL" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/ssl-proxy-settings.png"/>
+          <li>Dans le menu, sélectionnez <strong>Proxy &gt; SSL Proxy Settings</strong>. Assurez-vous que <strong>Activer le proxy SSL</strong> l'option est sélectionnée.
+            <figure class="bcls-figure"><img class="bcls-image" alt="SSL Proxy settings" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/ssl-proxy-settings.png" />
               <figcaption class="bcls-caption--image">Paramètres du proxy SSL</figcaption>
             </figure>
           </li>
-          <li>Dans la section <strong>Emplacement</strong> , sélectionnez le bouton <strong>Ajouter</strong> . Dans la boîte de dialogue <strong>Modifier l'emplacement</strong> , accédez au champ <strong>Port</strong> et entrez <strong>443</strong>. Sélectionnez <strong>OK</strong> pour enregistrer cette modification.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Emplacement port 443" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/port-443.png"/>
+          <li>Dans le <strong>Emplacement</strong> rubrique, sélectionnez le <strong>Ajouter</strong> bouton. Dans le <strong>Modifier l'emplacement</strong> boîte de dialogue, accédez au <strong>Port</strong> champ et entrez <strong>443</strong>. Sélectionner <strong>D'accord</strong> pour enregistrer cette modification.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Location port 443" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/port-443.png" />
               <figcaption class="bcls-caption--image">Emplacement port 443</figcaption>
             </figure>
           </li>
-          <li>Sélectionnez <strong>OK</strong> pour fermer la boîte de dialogue <strong>Modifier l'emplacement</strong> .
-            <figure class="bcls-figure"><img class="bcls-image" alt="Paramètres SSL avec emplacement" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/ssl-settings-location.png"/>
+          <li>Sélectionner <strong>D'accord</strong> pour fermer le <strong>Modifier l'emplacement</strong> dialogue.
+            <figure class="bcls-figure"><img class="bcls-image" alt="SSL settings with location" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/ssl-settings-location.png" />
               <figcaption class="bcls-caption--image">Paramètres SSL avec emplacement</figcaption>
             </figure>
           </li>
-          <li>Sélectionnez <strong>OK</strong> pour quitter la boîte de dialogue <strong>Paramètres de proxy SSL</strong> .</li>
+          <li>Sélectionner <strong>d'accord</strong> pour sortir du <strong>Paramètres de proxy SSL</strong> dialogue.</li>
           <li>Accédez à <strong>Aide &gt; SSL Proxying &gt; Installer le certificat racine Charles sur un appareil mobile ou un navigateur distant</strong>.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Installer le certificat racine" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/01-root-certificate.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Install root certificate" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/01-root-certificate.png" />
               <figcaption class="bcls-caption--image">Installer le certificat racine</figcaption>
             </figure>
           </li>
           <li>Vous devriez voir un message qui identifie l'adresse IP et le numéro de port du serveur local (8888) que vous utiliserez pour configurer le périphérique. Vous devriez également voir l'URL pour télécharger et installer le certificat. Copiez ces fichiers sur votre ordinateur pour une utilisation ultérieure.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Message de certificat" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/02-certificate-msg.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Certificate message" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/02-certificate-msg.png" />
               <figcaption class="bcls-caption--image">Message de certificat</figcaption>
             </figure>
-            <aside class="bcls-aside bcls-aside--information language-editable">Notez que vous devrez activer la confiance du certificat Charles.</aside>
+            <aside class="bcls-aside bcls-aside--information">Notez que vous devrez activer le certificat Charles pour qu'il soit approuvé.</aside>
           </li>
         </ol>
       </div>
@@ -582,32 +186,32 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <h4>Configuration de votre appareil iOS</h4>
         <ol>
           <li>Sur votre appareil, assurez-vous que vous êtes connecté au même réseau que votre ordinateur. Vous pouvez le vérifier en accédant aux <strong>paramètres &gt; Wifi</strong> et en sélectionnant le nom du réseau pour afficher les options avancées.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Réseau de périphériques" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/03-device-network.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Device network" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/03-device-network.png" />
               <figcaption class="bcls-caption--image">Réseau de périphériques</figcaption>
             </figure>
           </li>
-          <li>Dans la section HTTP en bas, sélectionnez Mode <strong>manuel</strong> . Ensuite, ajoutez l'adresse IP du serveur et le numéro de port (8888) que vous avez copiés à partir de Charles lors d'une étape précédente.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Détails Wifi" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/04-wifi-details.png"/>
+          <li>Dans la section HTTP en bas, sélectionnez <strong>Manuel</strong> mode. Ensuite, ajoutez l'adresse IP du serveur et le numéro de port (8888) que vous avez copiés à partir de Charles lors d'une étape précédente.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Wifi details" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/04-wifi-details.png" />
               <figcaption class="bcls-caption--image">Détails Wifi</figcaption>
             </figure>
           </li>
-          <li>Sur votre appareil, ouvrez un navigateur et accédez à <a href="//www.charlesproxy.com/getssl/">http://www.charlesproxy.com/getssl</a>. Vous serez redirigé vers les paramètres de votre appareil où vous serez invité à installer le profil de <strong>certificat racine personnalisé Charles Proxy</strong> . Cliquez sur le bouton <strong>Installer</strong> pour installer le certificat Charles sur votre appareil.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Installer le certificat Charles" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/06-charles-install.png"/>
+          <li>Sur votre appareil, ouvrez un navigateur et accédez à <a href="//www.charlesproxy.com/getssl/">http://www.charlesproxy.com/getssl</a>. Vous serez redirigé vers les paramètres de votre appareil où vous serez invité à installer le <strong>Certificat racine personnalisé du proxy Charles</strong> profil. Cliquez sur le bouton <strong>Installer</strong> pour installer le certificat Charles sur votre appareil.
+            <figure class="bcls-figure"><img class="bcls-image" alt="Install Charles certificate" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/06-charles-install.png" />
               <figcaption class="bcls-caption--image">Installer le certificat Charles</figcaption>
             </figure>
           </li>
           <li>Suivez les étapes pour installer le certificat Charles. Lorsque vous avez terminé, sélectionnez <strong>Terminé</strong>.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Profil Charles installé" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/09-profile-installed.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Charles profile installed" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/09-profile-installed.png" />
               <figcaption class="bcls-caption--image">Profil Charles installé</figcaption>
             </figure>
           </li>
           <li>Ensuite, vous êtes prêt à vous assurer que votre appareil approuve le certificat Charles. Sur votre appareil, accédez à <strong>Généralités à &gt; propos des paramètres &gt; d'approbation des certificats</strong>. Ici vous devriez trouver le certificat Charles Proxy.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Paramètres de confiance des certificats" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/certificate-trust-settings.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Certificate Trust Settings" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/certificate-trust-settings.png" />
               <figcaption class="bcls-caption--image">Paramètres de confiance des certificats</figcaption>
             </figure>
           </li>
           <li>Activez le certificat Charles. Notez le message d'avertissement. Vous pouvez désactiver ce certificat lorsque vous ne déboguez pas avec Charles.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Activer le certificat d'approbation" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/enable-trust.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="Enable trust certificate" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/enable-trust.png" />
               <figcaption class="bcls-caption--image">Activer le certificat d'approbation</figcaption>
             </figure>
           </li>
@@ -617,35 +221,35 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     </figure>
     </li> -->
           <li>Maintenant, vous pourrez voir toutes les données envoyées et reçues dans Charles.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Voir les données Charles" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/11-charles-data.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="See Charles data" src="//learning-services-media.brightcove.com/doc-assets/concepts/mobile-debugging/11-charles-data.png" />
               <figcaption class="bcls-caption--image">Voir les données Charles</figcaption>
             </figure>
           </li>
         </ol>
         <h4>Configuration de votre appareil Android</h4>
-        <aside class="bcls-aside bcls-aside--information language-editable">Ces étapes ne fonctionneront que sur les appareils exécutant Android 2.3 et versions ultérieures.</aside>
+        <aside class="bcls-aside bcls-aside--information">Ces étapes ne fonctionneront que sur les appareils fonctionnant sous Android 2.3 et versions ultérieures.</aside>
         <ol>
           <li>Sur votre appareil, ouvrez un navigateur et accédez à <a href="//www.charlesproxy.com/getssl/">//chls.pro/ssl</a>.</li>
-          <li>Vous serez invité avec une boîte de dialogue <strong>Nom de certificat</strong> . Spécifiez un nom pour le certificat et définissez le champ <strong>Utilisé pour</strong> sur <strong>Wi-Fi</strong>. Sélectionnez <strong>OK</strong> pour installer le certificat.
-            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Installer le certificat Charles" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-charles.png"/>
+          <li>Vous serez invité avec un <strong>Nom du certificat</strong> dialogue. Spécifiez un nom pour le certificat et définissez le champ <strong>Utilisé pour</strong> sur <strong>Wi-Fi</strong>. Sélectionnez <strong>OK</strong> pour installer le certificat.
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Install Charles Certificate" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/04-charles.png" />
               <figcaption class="bcls-caption--image">Installer le certificat Charles</figcaption>
             </figure>
           </li>
-          <li>Ensuite, ouvrez le menu <strong>Paramètres &gt; Wi-Fi</strong> . Vous verrez une liste des réseaux auxquels vous vous êtes connecté sur votre appareil. Sélectionnez le réseau sans fil auquel vous êtes actuellement connecté. N'oubliez pas que ce réseau doit correspondre au réseau auquel vous êtes connecté sur votre ordinateur.</li>
+          <li>Ensuite, ouvrez le <strong>Paramètres&gt; Wifi</strong> menu. La liste des réseaux auxquels vous vous êtes connecté sur votre appareil s'affiche. Sélectionnez le réseau sans fil auquel vous êtes actuellement connecté. N'oubliez pas que ce réseau doit correspondre au réseau auquel vous êtes connecté sur votre ordinateur.</li>
           <li>Cela ouvrira une petite boîte de dialogue avec trois options : Modifier, Afficher ou Oublier. Sélectionnez <strong>Modifier</strong>.</li>
-          <li>Dans cette boîte de dialogue, faites défiler vers le bas et activez le champ <strong>Afficher les options avancées</strong> . Cela révélera les paramètres Proxy et IP.
-            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Paramètres avancés" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-charles.png"/>
+          <li>Dans cette boîte de dialogue, faites défiler vers le bas et activez le <strong>Montrer les options avancées</strong> champ. Cela révélera les paramètres Proxy et IP.
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Advanced Settings" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/05-charles.png" />
               <figcaption class="bcls-caption--image">Paramètres avancés</figcaption>
             </figure>
           </li>
           <li>Modifiez le champ <strong>Paramètres du proxy</strong> sur <strong>Manuel</strong>.</li>
-          <li>Remplissez le champ <strong>Nom d'hôte proxy</strong> avec l'adresse IP de votre ordinateur et le champ <strong>Port proxy</strong> pour correspondre au port défini dans Charles (par défaut, le port est défini sur 8888). Sélectionnez Enregistrer .
-            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Définir l'adresse IP" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/06-charles.png"/>
+          <li>Remplissez le champ <strong>Nom d'hôte proxy</strong> avec l'adresse IP de votre ordinateur et le champ <strong>Port proxy</strong> pour correspondre au port défini dans Charles (par défaut, le port est défini sur 8888). Sélectionnez Enregistrer.
+            <figure class="bcls-figure"><img width="400" class="bcls-image" alt="Set IP Address" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/06-charles.png" />
               <figcaption class="bcls-caption--image">Définir l'adresse IP</figcaption>
             </figure>
           </li>
           <li>Dans le navigateur par défaut de votre appareil, accédez à un site Web. Vous pourrez voir toutes les données envoyées et reçues dans Charles.
-            <figure class="bcls-figure"><img class="bcls-image" alt="Voir Transfert de données" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/07-charles.png"/>
+            <figure class="bcls-figure"><img class="bcls-image" alt="See Data Transfer" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/general-information/mobile-debugging/07-charles.png" />
               <figcaption class="bcls-caption--image">Voir Transfert de données</figcaption>
             </figure>
           </li>
@@ -654,174 +258,3 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
     </div>
   </section>
   <!-- div id="charles" --></article>
-
-<!-- complete bootstrap layout -->
-    </div>
-    <div class="col-sm-2 right-side-bar">
-      
-      <nav class="right-side-nav" id="right_side_nav">
-        <h6 class="toc">Contenu de la page</h6>
-        <ul id="in_page_nav" class="list-none"></ul>
-      </nav>
-      
-    </div>
-  </div>
-</div>
-
-<hr>
-<div class="last-updated">
-  Page mise à jour le 29 sept. 2020
-</div>
-
-
-
-<footer class="bcls-footer" role="contentinfo">
-  <div class="row">
-    <div class="region region-footer-top-center col-md-12">
-      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
-
-        <h2>Assistance Brightcove</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://status.brightcove.com">État du système</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">Contacter le support</a>
-          </li>
-          <li>
-            <a href="https://support.brightcove.com/">Documentation</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
-
-        <h2>Formation</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">Cours en ligne</a>
-          </li>
-          <li>
-            <a href="https://studio.support.brightcove.com/training/register-training.html">S' inscrire à un cours</a>
-          </li>
-          <li>
-            <a href="https://university.brightcove.com/">Université de Brightcove</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
-
-        <h2>Brightcove</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://www.brightcove.com">BrightCove.com</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">Contactez-nous</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div class="row">
-    <div class="region region-footer-bottom-center col-md-12">
-      <div class="bcls-copyright footer-menu">
-        <table>
-          <tr>
-            <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove, Inc. Tous droits réservés.</div>
-            </td>
-            <td><a href="https://www.brightcove.com/en/legal/privacy">Confidentialité</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">Termes et conditions</a></td>
-            <td>
-              <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</footer>
-<div id="talla_wrapper">
-  <p style="text-align: right;position: relative;"><button style="background:rgb(7, 9, 140);color:;Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">Avez-vous des questions ? </button> </p>
-  <div id="talla_chat">
-</div>
-</div>
-<script>
-
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-
-
-</script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
-  
-  <!-- <script src="/assets/js/toc.js"></script> -->
-  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
-  
-  <script src="/assets/js/sites_nav.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
-  <script src="/assets/js/feedback.js"></script>
-  
-  <script src="/assets/js/sajari-search-foot.js"></script>
-  
-  <!-- <script src="/assets/js/sajari-index.js"></script> -->
-  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
-  <script src="/assets/js/talla-init.js"></script>
-  <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
-    </style>
-
-</body>
-
-</html>
