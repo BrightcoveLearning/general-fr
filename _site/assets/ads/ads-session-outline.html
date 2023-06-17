@@ -1,91 +1,92 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 
 <head>
   <meta charset="UTF-8">
-  <title>Notes d'information de la réunion David</title>
+  <title>David Meeting Ad Info Notes</title>
 </head>
 
 <body>
-  <h1>***Notes d'information sur la réunion David</h1>
-  <br/>
-  <h1>Vocabulaire de base</h1>
-  <h3>Types d'annonces</h3>
+  <h1>***David Meeting Ad Info Notes***</h1>
+  <br />
+  <h1>Basic vocabulary</h1>
+  <h3>Ad types</h3>
   <ul>
-    <li>Publicités linéaires : Les annonces qui se produisent pendant la lecture prennent du temps dans la chronologie (par exemple, un pré-roll)</li>
-    <li>Publicités non linéaires : N'interrompt pas la lecture ; superposition et annonces complémentaires en sont des exemples</li>
+    <li>Linear ads: Ads that occur during playback, take up time in the timeline (example is a pre-roll)</li>
+    <li>Non-linear ads: Does not interrupt playback; overlay and companion ads are examples</li>
   </ul>
-  <h3>Normes publicitaires</h3>
+  <h3>Ad standards</h3>
   <ul>
     <li>
-      <p>VMAP : « playlist d'annonces » ; spécifie le pré-roll, le (s) milieu (s) et le post-roll (URL d'un document VMAP) ; le format est XML</p>
+      <p>VMAP: &quot;ad playlist&quot;; specifies pre-roll, mid-roll(s) and post-roll (URL to a VMAP document); format is XML</p>
       <ul>
-        <li>DFP appelle les documents VMAP « règles publicitaires » ; avec les règles publicitaires, vous pouvez configurer toutes vos annonces sur le serveur et tout client qui comprend les règles publicitaires se comporte de la même manière ; configuration publicitaire « mauvais vieux jours » au client ; logique déplacée dans le système de publication</li>
+        <li>DFP calls VMAP documents &quot;ad rules&quot;; with ad rules you can configure all your ads on the server and any client who understands ad rules behaves the same; in &quot;bad old days&quot; ad configuration at the client; logic moved into publishing
+          system</li>
       </ul>
     </li>
     <li>
-      <p>VAST : Détails de l'annonce individuelle ; VMAP pointe vers un document VAST contenant des informations sur l'annonce</p>
+      <p>VAST: Individual ad details; VMAP points to a VAST document with information about the ad</p>
     </li>
-    <li>Exemple VAST à partir de l'onglet Réseau dans les outils de développement Chrome</li>
-		    <p><img src="vast-response.png"/></p>
+    <li>Example VAST from Network tab in Chrome Dev Tools</li>
+		    <p><img src="vast-response.png"></p>
     <li>
-      <p>VPAID : Comme VAST, mais une norme pour les annonces interactives ; l'annonce contient un quiz ou un jeu maladroit (pas encore de prise en charge de BC Player)</p>
+      <p>VPAID: Like VAST, but a standard for interactive ads; ad contains a quiz or goofy game (no BC Player support yet)</p>
     </li>
   </ul>
-  <h1>Informations sur le plugin IMA</h1>
+  <h1>IMA Plugin information</h1>
   <ul>
     <li>
-      <p>Contrainte IMA : 2 versions de la bibliothèque IMA, version Flash ou HTML, ne peuvent pas utiliser à la fois</p>
+      <p>IMA constraint: 2 versions of IMA library, Flash or HTML version, cannot use both</p>
       <ul>
-        <li>paramètres par défaut pour le plugin utiliser Flash si disponible (car les annonces Flash sont si répandues)</li>
-        <li>Dans les options de configuration pour le plugin peuvent basculer par défaut en HTML (<strong>AdTechOrder</strong>)</li>
-        <li>Flash par défaut du bureau, HTML par défaut pour mobile</li>
+        <li>default settings for plugin use Flash if available (because Flash ads are so prevalent)</li>
+        <li>In config options for plugin can switch default to HTML (<strong>adTechOrder</strong>)</li>
+        <li>Desktop default Flash, mobile default HTML</li>
       </ul>
     </li>
     <li>
-      <p>Mise en œuvre de base du plugin IMA</p>
+      <p>Basic implementation of IMA Plugin</p>
       <ul>
-        <li>Inclure JavaScript pour le plugin</li>
-        <li>Ajouter IMA Plugin au lecteur</li>
-        <li>Fournir ServerURL à la balise d'annonce</li>
-        <li>Exemple de configuration</li>
-		    <p><img src="plugin-simple-config.png"/></p>
+        <li>Include JavaScript for plugin</li>
+        <li>Add IMA Plugin to player</li>
+        <li>Provide serverURL to ad tag</li>
+        <li>Sample config</li>
+		    <p><img src="plugin-simple-config.png"></p>
       </ul>
     </li>
     <li>
-      <p>Ciblage dynamique des annonces : Configuration du plugin IMA effectuée après la collecte des informations client (par exemple, âge des utilisateurs, puis sélectionnez la règle d'annonce)</p>
+      <p>Dynamic Ad Targeting: Configuration of IMA Plugin done after gathering customer info (for example viewers age, then select ad rule)</p>
       <ul>
-        <li>Inclure JavaScript pour le plugin</li>
-        <li>Appelez le plugin IMA et les options de passe à ce stade
+        <li>Include JavaScript for plugin</li>
+        <li>Call IMA plugin and pass options at that point
           <ul>
-            <li>MyPlayer.IMA3 ({serverURL :...})</li>
+            <li>myPlayer.ima3({ serverURL: ...})</li>
           </ul>
         </li>
       </ul>
     </li>
-    <li>Annonces complémentaires : IMA Plugin traitera les annonces linéaires et les superpositions de manière transparente, les annonces compagnons peuvent être difficiles puisque la communication entre le joueur et le reste de la page doit se produire ; ; ; utiliser l'implémentation d'intégration dans la page</li>
+    <li>Companion ads: IMA Plugin will deal with linear ads and overlays seamlessly, companion ads can be tricky since communication between the player and the rest of the page must occur; ; ; use In-page embed implementation</li>
     <ul>
-    	<li>Utilisez la bibliothèque Google Publisher Tags (GPT) et remplira automatiquement les blocs publicitaires compagnons</li>
-    	<li>Bon tutoriel disponible sur le site IMA</li>
-    	<li>Utiliser l'implémentation intégrée dans la page pour les annonces compagnons car iframe ne peut pas interagir avec la page parent</li>
-    	<li>Exemple : JS et HTML pour les annonces complémentaires</li>
-		    <p><img src="companion-ad-script.png"/></p>
-		    <p><img src="companion-ad-html.png"/></p>
+    	<li>Use Google Publisher Tags (GPT) library and will automatically fill the companion ad blocks</li>
+    	<li>Good tutorial available on IMA site</li>
+    	<li>Use In-page embed implementation for companion ads since iframe can't interact with parent page</li>
+    	<li>Example: JS and HTML for companion ad</li>
+		    <p><img src="companion-ad-script.png"></p>
+		    <p><img src="companion-ad-html.png"></p>
     </ul>
   </ul>
-  <h1>Ressources</h1>
+  <h1>Resources</h1>
   <ul>
-    <li>Information générale IMA : <a href="https://developers.google.com/interactive-media-ads/">https://developers.google.com/interactive-media-ads/</a>
+    <li>General IMA info: <a href="https://developers.google.com/interactive-media-ads/">https://developers.google.com/interactive-media-ads/</a>
     </li>
-    <li>Dépannage : Video Suite Inspector (https://developers.google.com/interactive-media-ads/docs/vastinspector_dual) teste si la balise vidéo/serveur fonctionne
-    	<ul><li>ASSUREZ-VOUS de tester si l'URL fonctionne avant de l'utiliser avec BC Player, vérifie si le serveur publicitaire est compatible ; si cela ne fonctionne pas ici, il ne fonctionnera pas dans BC Player</li></ul>
+    <li>Troubleshooting: Video Suite Inspector (https://developers.google.com/interactive-media-ads/docs/vastinspector_dual) tests if video tag/server working
+    	<ul><li>BE SURE to test if URL works before using with BC PLayer, checks for compatible ad server; if won't work here it won't work in BC Player</li></ul>
     </li>
   </ul>
-  <h1>Ceci est l' « API de publicité » de Brightcove Player</h1>
+  <h1>This is Brightcove Player's "ad API"</h1>
   <ul>
-  	<li>https://github.com/videojs/videojs-contrib-ads : Intéressant pour les PARTENAIRES qui rédigent leur propre implémentation d'annonces</li>
-    <li>Du site « Le plugin videojs-contrib-ads fournit des fonctionnalités communes nécessaires aux bibliothèques de publicité vidéo travaillant avec video.js. Il prend en charge un certain nombre de préoccupations pour vous, réduisant le code que vous devez écrire pour l'intégration de votre annonce.«</li>
-    <li>Cas d'utilisation : Une façon de montrer des pare-chocs qui ont un style différent de celui des annonces</li>
+  	<li>https://github.com/videojs/videojs-contrib-ads: Interesting for PARTNERS who are writing own ad implementation</li>
+    <li>From the site "The videojs-contrib-ads plugin provides common functionality needed by video advertisement libraries working with video.js. It takes care of a number of concerns for you, reducing the code you have to write for your ad integration."</li>
+    <li>Use case: Way to show bumpers that have different style than ads</li>
   </ul>
 </body>
 
